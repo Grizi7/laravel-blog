@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
    
-   @include('home.layouts.head');
+   @include('home.layouts.head')
 
    <body>
       <!-- header section start -->
-      @include('home.layouts.header');
+      @include('home.layouts.header')
       <!-- header section end -->
 
       <!-- services section start -->
-      @include('home.layouts.services');
+      @include('home.layouts.services')
       <!-- services section end -->
       <!-- about section start -->
-      @include('home.layouts.about');
+      @include('home.layouts.about')
       <!-- about section end -->
       <!-- blog section start -->
       <div class="blog_section layout_padding">
@@ -108,9 +108,9 @@
       </div>
       <!-- choose section end -->
       <!-- footer section start -->
-      @include('home.layouts.footer');
+      @include('home.layouts.footer')
       <!-- footer section end -->
       <!-- Javascript files-->
-      @include('home.layouts.scripts');    
+      @include('home.layouts.scripts')    
    </body>
 </html>

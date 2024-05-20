@@ -298,14 +298,19 @@ button {
     margin: 0 auto;
 }
 
-.menu_main ul {
+.menu_main ul:not(.dropdown-menu) {
     margin: 0px;
     padding: 0px;
     list-style: none;
     display: inline-flex;
 }
+.menu_main .dropdown-menu{   
+    background-color: #2b2278;
+    border-radius: 10px;
+    padding: 0;
+}
 
-.menu_main li {
+.menu_main li:not(.dropdown-item) {
     float: left;
     padding-left: 10px;
     padding-right: 10px;
@@ -317,15 +322,24 @@ button {
     border-radius: 40px;
 }
 
+.dropdown-item{
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 10px;
+}
 .menu_main li a {
     color: #ffffff;
     padding: 10px 20px;
     border-radius: 10px;
 }
 
-.menu_main li a:hover {
+.menu_main li a:hover:not(.dropdown-item a) {
     color: #ffffff;
     background-color: #2b2278;
+}
+
+.menu_main .dropdown-item a:hover{
+    color:  #2b2278;
 }
 
 .mb-lg-0,
