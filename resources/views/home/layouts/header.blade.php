@@ -36,7 +36,7 @@
                               <form method="POST" action="{{ route('logout') }}">
                                  @csrf
 
-                                 <li class="dropdown-item"><a href="{{route('logout')}}" onclick="event.preventDefault(); this.closest('form').submit();"">Logout</a></li>
+                                 <li class="dropdown-item"><a href="{{route('logout')}}" onclick="event.preventDefault(); this.closest('form').submit();">Logout</a></li>
                               
                               </form>
                            </ul>
@@ -74,7 +74,7 @@
                               <form method="POST" action="{{ route('logout') }}">
                                  @csrf
 
-                                 <li class="dropdown-item"><a href="{{route('logout')}}" onclick="event.preventDefault(); this.closest('form').submit();"">Logout</a></li>
+                                 <li class="dropdown-item"><a href="{{route('logout')}}" onclick="event.preventDefault(); this.closest('form').submit();">Logout</a></li>
                               
                               </form>
                            </ul>
