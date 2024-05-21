@@ -1,8 +1,8 @@
 <div class="page-content">
     <div class="page-header">
-    <div class="container-fluid">
-        <h2 class="h5 no-margin-bottom">Dashboard</h2>
-    </div>
+        <div class="container-fluid">
+            <h2 class="h5 no-margin-bottom">Dashboard</h2>
+        </div>
     </div>
     <section class="no-padding-top no-padding-bottom">
     <div class="container-fluid">
@@ -132,7 +132,7 @@
         <div class="row">
         <div class="col-lg-4">
             <div class="user-block block text-center">
-            <div class="avatar"><img src="assests/img/avatar-1.jpg" alt="..." class="img-fluid">
+            <div class="avatar"><img src="admin/img/avatar-1.jpg" alt="..." class="img-fluid">
                 <div class="order dashbg-2">1st</div>
             </div><a href="#" class="user-title">
                 <h3 class="h5">Richard Nevoreski</h3><span>@richardnevo</span></a>
@@ -146,7 +146,7 @@
         </div>
         <div class="col-lg-4">
             <div class="user-block block text-center">
-            <div class="avatar"><img src="assests/img/avatar-4.jpg" alt="..." class="img-fluid">
+            <div class="avatar"><img src="admin/img/avatar-4.jpg" alt="..." class="img-fluid">
                 <div class="order dashbg-1">2nd</div>
             </div><a href="#" class="user-title">
                 <h3 class="h5">Samuel Watson</h3><span>@samwatson</span></a>
@@ -160,7 +160,7 @@
         </div>
         <div class="col-lg-4">
             <div class="user-block block text-center">
-            <div class="avatar"><img src="assests/img/avatar-6.jpg" alt="..." class="img-fluid">
+            <div class="avatar"><img src="admin/img/avatar-6.jpg" alt="..." class="img-fluid">
                 <div class="order dashbg-4">3rd</div>
             </div><a href="#" class="user-title">
                 <h3 class="h5">Sebastian Wood</h3><span>@sebastian</span></a>
@@ -177,7 +177,7 @@
         <div class="row d-flex align-items-center">                   
             <div class="col-lg-4 d-flex align-items-center">
             <div class="order">4th</div>
-            <div class="avatar"> <img src="assests/img/avatar-1.jpg" alt="..." class="img-fluid"></div><a href="#" class="name"><strong class="d-block">Tomas Hecktor</strong><span class="d-block">@tomhecktor</span></a>
+            <div class="avatar"> <img src="admin/img/avatar-1.jpg" alt="..." class="img-fluid"></div><a href="#" class="name"><strong class="d-block">Tomas Hecktor</strong><span class="d-block">@tomhecktor</span></a>
             </div>
             <div class="col-lg-4 text-center">
             <div class="contributions">410 Contributions</div>
@@ -195,7 +195,7 @@
         <div class="row d-flex align-items-center">                   
             <div class="col-lg-4 d-flex align-items-center">
             <div class="order">5th</div>
-            <div class="avatar"> <img src="assests/img/avatar-2.jpg" alt="..." class="img-fluid"></div><a href="#" class="name"><strong class="d-block">Alexander Shelby</strong><span class="d-block">@alexshelby</span></a>
+            <div class="avatar"> <img src="admin/img/avatar-2.jpg" alt="..." class="img-fluid"></div><a href="#" class="name"><strong class="d-block">Alexander Shelby</strong><span class="d-block">@alexshelby</span></a>
             </div>
             <div class="col-lg-4 text-center">
             <div class="contributions">320 Contributions</div>
@@ -213,7 +213,7 @@
         <div class="row d-flex align-items-center">                   
             <div class="col-lg-4 d-flex align-items-center">
             <div class="order">6th</div>
-            <div class="avatar"> <img src="assests/img/avatar-6.jpg" alt="..." class="img-fluid"></div><a href="#" class="name"><strong class="d-block">Arther Kooper</strong><span class="d-block">@artherkooper</span></a>
+            <div class="avatar"> <img src="admin/img/avatar-6.jpg" alt="..." class="img-fluid"></div><a href="#" class="name"><strong class="d-block">Arther Kooper</strong><span class="d-block">@artherkooper</span></a>
             </div>
             <div class="col-lg-4 text-center">
             <div class="contributions">170 Contributions</div>
@@ -318,23 +318,23 @@
                 <div class="messages-block block">
                 <div class="title"><strong>New Messages</strong></div>
                 <div class="messages"><a href="#" class="message d-flex align-items-center">
-                    <div class="profile"><img src="assests/img/avatar-3.jpg" alt="..." class="img-fluid">
+                    <div class="profile"><img src="admin/img/avatar-3.jpg" alt="..." class="img-fluid">
                         <div class="status online"></div>
                     </div>
                     <div class="content">   <strong class="d-block">Nadia Halsey</strong><span class="d-block">lorem ipsum dolor sit amit</span><small class="date d-block">9:30am</small></div></a><a href="#" class="message d-flex align-items-center">
-                    <div class="profile"><img src="assests/img/avatar-2.jpg" alt="..." class="img-fluid">
+                    <div class="profile"><img src="admin/img/avatar-2.jpg" alt="..." class="img-fluid">
                         <div class="status away"></div>
                     </div>
                     <div class="content">   <strong class="d-block">Peter Ramsy</strong><span class="d-block">lorem ipsum dolor sit amit</span><small class="date d-block">7:40am</small></div></a><a href="#" class="message d-flex align-items-center">
-                    <div class="profile"><img src="assests/img/avatar-1.jpg" alt="..." class="img-fluid">
+                    <div class="profile"><img src="admin/img/avatar-1.jpg" alt="..." class="img-fluid">
                         <div class="status busy"></div>
                     </div>
                     <div class="content">   <strong class="d-block">Sam Kaheil</strong><span class="d-block">lorem ipsum dolor sit amit</span><small class="date d-block">6:55am</small></div></a><a href="#" class="message d-flex align-items-center">
-                    <div class="profile"><img src="assests/img/avatar-5.jpg" alt="..." class="img-fluid">
+                    <div class="profile"><img src="admin/img/avatar-5.jpg" alt="..." class="img-fluid">
                         <div class="status offline"></div>
                     </div>
                     <div class="content">   <strong class="d-block">Sara Wood</strong><span class="d-block">lorem ipsum dolor sit amit</span><small class="date d-block">10:30pm</small></div></a><a href="#" class="message d-flex align-items-center">
-                    <div class="profile"><img src="assests/img/avatar-1.jpg" alt="..." class="img-fluid">
+                    <div class="profile"><img src="admin/img/avatar-1.jpg" alt="..." class="img-fluid">
                         <div class="status online"></div>
                     </div>
                     <div class="content">   <strong class="d-block">Nader Magdy</strong><span class="d-block">lorem ipsum dolor sit amit</span><small class="date d-block">9:47pm</small></div></a></div>
