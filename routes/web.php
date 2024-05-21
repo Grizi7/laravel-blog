@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,8 +16,13 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('/admin', function () {
-        return 'admin';
+    Route::prefix('post')->group(function () {
+        Route::get('/', [PostController::class, 'index'])->name('post.index');
+        Route::get('/add', [PostController::class, 'add'])->name('post.add');
+        Route::post('/add', [PostController::class, 'store'])->name('post.add');
+        Route::get('/edit/{id}', [PostController::class, 'edit'])->name('post.edit');
+        Route::post('/edit/{id}', [PostController::class, 'update'])->name('post.edit');
+        Route::post('/delete/{id}', [PostController::class, 'delete'])->name('post.delete');
     });
 });
 
