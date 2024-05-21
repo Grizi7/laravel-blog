@@ -16,12 +16,12 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware(['auth', 'admin'])->group(function () {
-    Route::prefix('post')->group(function () {
-        Route::get('/', [PostController::class, 'index'])->name('post.index');
+    Route::prefix('posts')->group(function () {
+        Route::get('/', [PostController::class, 'index'])->name('posts');
         Route::get('/add', [PostController::class, 'add'])->name('post.add');
-        Route::post('/add', [PostController::class, 'store'])->name('post.add');
+        Route::post('/add', [PostController::class, 'store'])->name('post.store');
         Route::get('/edit/{id}', [PostController::class, 'edit'])->name('post.edit');
-        Route::post('/edit/{id}', [PostController::class, 'update'])->name('post.edit');
+        Route::post('/edit/{id}', [PostController::class, 'update'])->name('post.update');
         Route::post('/delete/{id}', [PostController::class, 'delete'])->name('post.delete');
     });
 });
