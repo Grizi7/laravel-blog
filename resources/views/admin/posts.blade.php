@@ -32,41 +32,95 @@
                                         </script>
                                     @endif
                                     @if($do == 'view')
-                                        <div class="title">
-                                            <strong>Posts Table</strong>
-                                        </div>
-                                        <div class="table-responsive"> 
-                                            <table class="table">
-                                                <thead>
-                                                    <tr>
-                                                    <th>#</th>
-                                                    <th>First Name</th>
-                                                    <th>Last Name</th>
-                                                    <th>Username</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                    <th scope="row">1</th>
-                                                    <td>Mark</td>
-                                                    <td>Otto</td>
-                                                    <td>@mdo</td>
-                                                    </tr>
-                                                    <tr>
-                                                    <th scope="row">2</th>
-                                                    <td>Jacob</td>
-                                                    <td>Thornton</td>
-                                                    <td>@fat</td>
-                                                    </tr>
-                                                    <tr>
-                                                    <th scope="row">3</th>
-                                                    <td>Larry</td>
-                                                    <td>the Bird</td>
-                                                    <td>@twitter</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
+                                        @if($posts->count() != 0)
+                                            <div class="title">
+                                                <strong>Posts Table</strong>
+                                            </div>
+                                            <div class="table-responsive"> 
+                                                <table class="table">
+                                                    <thead>
+                                                        <tr>
+                                                        <th>#</th>
+                                                        <th>Image</th>
+                                                        <th>Title</th>
+                                                        <th>Content</th>
+                                                        <th>Publish</th>
+                                                        <th>Created at</th>
+                                                        <th>Control</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach($posts as $post)
+                                                            <tr>
+                                                                <th scope="row">{{$post->id}}</th>
+                                                                <td><img src="{{ asset('storage/'. $post->image) }}" alt="Post Image" style="width: 100px; height: 100px;"></td>
+                                                                <td>{{$post->title}}</td>
+                                                                <td>
+                                                                    <button type="button" data-toggle="modal" data-target="#post_content_{{$post->id}}" class="btn btn-primary">Content</button>
+                                                                </td>
+                                                                <td>
+                                                                    @if($post->is_published)
+                                                                        <span class="badge badge-success text-xl">Published</span>
+                                                                    @else
+                                                                        <span class="badge badge-danger text-xl">Unpublished</span>
+                                                                    @endif
+                                                                </td>
+                                                                <td>{{$post->created_at}}</td>
+                                                                <td>
+                                                                    <a href="/posts/edit/{{$post['id']}}"><button type="button" class="btn btn-secondy m-2">Edit</button></a>
+                                                                    <a action="/posts"  onclick="event.preventDefault(); document.getElementById('delete-form-{{$post['id']}}').submit();">
+                                                                    <button type="submit" class="btn btn-danger m-2">Delete</button></a>
+                                                                    <form id="delete-form-{{$post['id']}}" action="/posts" method="POST" class="d-none">
+                                                                        @method('delete')
+                                                                        @csrf
+                                                                        <input name="id" hidden type="text" value="{{$post['id']}}">
+                                                                    </form>
+                                                                    <br>
+                                                                    @php
+                                                                        if($post->is_published){
+                                                                            $publish_controller ='Unpublish';
+                                                                        }    
+                                                                        else{
+                                                                            $publish_controller ='Publish';
+                                                                        }
+
+                                                                    @endphp
+
+                                                                    <a action="/posts/{{$publish_controller}}"  onclick="event.preventDefault(); document.getElementById('{{$publish_controller}}-form-{{$post->id}}').submit();">
+                                                                    <button type="submit" class="btn btn-warning m-2">{{$publish_controller}}</button></a>
+                                                                    <form id="{{$publish_controller}}-form-{{$post->id}}" action="/posts/{{$publish_controller}}" method="POST" class="d-none">
+                                                                        @method('PATCH')
+                                                                        @csrf
+                                                                        <input name="id" hidden type="text" value="{{$post->id}}">
+                                                                        <input name="do" hidden type="text" value="{{$publish_controller}}">
+                                                                    </form>
+                                                                </td>
+                                                            </tr>
+                                                            <div id="post_content_{{$post->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
+                                                                <div role="document" class="modal-dialog">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header"><strong id="exampleModalLabel" class="modal-title">Post Content</strong>
+                                                                            <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            <p>{{$post->content}}</p>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        @endforeach
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        @else
+                                            <div class="alert alert-danger">
+                                                <p>No Posts Found</p>
+                                            </div>        
+                                        @endif
+                                        <a href="{{route('post.add')}}" class="btn btn-primary m-2">Add Post</a>
                                     @elseif($do == 'add')
                                         <div class="block">
                                             <div class="title">

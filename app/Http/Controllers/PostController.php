@@ -6,11 +6,15 @@ use App\Http\Requests\PostRequest;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
+use function PHPUnit\Framework\isEmpty;
+
 class PostController extends Controller
 {
     public function index(){
+        $posts = Post::all();
         return view('admin.posts', [
-            'do' => 'view'
+            'do' => 'view',
+            'posts' => $posts
         ]);
     }
 
