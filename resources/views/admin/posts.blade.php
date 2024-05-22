@@ -18,19 +18,30 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="block margin-bottom-sm">
-                                    @if (session()->has('success'))
-                                        <div id="success-alert" class="alert alert-success">
-                                            <p>
-                                                {{ session()->get('success') }}
-                                            </p>
-                                        </div>
+                                    @if (session()->has('success') || session()->has('error'))
+                                        @if(session()->has('success'))
+                                            <div id="success-alert" class="alert alert-success">
+                                                <p>
+                                                    {{ session()->get('success') }}
+                                                </p>
+                                            </div>
+                                        
+                                        @else
+                                            <div id="danger-alert" class="alert alert-danger">
+                                                <p>
+                                                    {{ session()->get('error') }}
+                                                </p>
+                                            </div>
+                                        @endif
 
                                         <script>
                                             setTimeout(function(){
                                                 document.getElementById('success-alert').style.display = 'none';
+                                                document.getElementById('danger-alert').style.display = 'none';
                                             }, 4000);
                                         </script>
                                     @endif
+                                    
                                     @if($do == 'view')
                                         @if($posts->count() != 0)
                                             <div class="title">
@@ -67,7 +78,7 @@
                                                                 </td>
                                                                 <td>{{$post->created_at}}</td>
                                                                 <td>
-                                                                    <a href="/posts/edit/{{$post['id']}}"><button type="button" class="btn btn-secondy m-2">Edit</button></a>
+                                                                    <a href="{{route('post.edit', $post['id'])}}"><button type="button" class="btn btn-secondy m-2">Edit</button></a>
                                                                     <a action="/posts"  onclick="event.preventDefault(); document.getElementById('delete-form-{{$post['id']}}').submit();">
                                                                     <button type="submit" class="btn btn-danger m-2">Delete</button></a>
                                                                     <form id="delete-form-{{$post['id']}}" action="/posts" method="POST" class="d-none">
@@ -131,18 +142,63 @@
                                                     @csrf
                                                     <div class="form-group">
                                                         <label class="form-control-label">Title</label>
-                                                        <input type="text" name="title" placeholder="Post Title" class="form-control" required>
+                                                        <input type="text" name="title" placeholder="Post Title" class="form-control" required value="{{old('title')}}">
+                                                        @error('title')
+                                                            <p class="text-danger mt-1 mb-0">{{$message}}</p>
+                                                        @enderror
                                                     </div>
                                                     <div class="form-group">       
                                                         <label class="form-control-label">Content</label>
-                                                        <textarea name="content" placeholder="Post Content" class="form-control" required></textarea>
+                                                        <textarea name="content" placeholder="Post Content" class="form-control" required>{{old('content')}}</textarea>
+                                                        @error('content')
+                                                            <p class="text-danger mt-1 mb-0">{{$message}}</p>
+                                                        @enderror
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="form-control-label">Image</label>
-                                                        <input type="file" name="image" placeholder="Post Image" class="form-control" >
+                                                        <input type="file" name="image" placeholder="Post Image" class="form-control"  value="{{old('image')}}">
+                                                        @error('image')
+                                                            <p class="text-danger mt-1 mb-0">{{$message}}</p>
+                                                        @enderror
                                                     </div>
                                                     <div class="form-group">       
                                                         <input type="submit" value="Add" class="btn btn-primary">
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    @elseif($do == 'edit')
+                                        <div class="block">
+                                            <div class="title">
+                                                <strong class="d-block">Edit Post</strong>
+                                            </div>
+                                            <div class="block-body">
+                                                <form action="{{route('post.update', $post->id)}}" method="POST" enctype="multipart/form-data">
+                                                    @csrf
+                                                    @method('PATCH')
+                                                    <div class="form-group">
+                                                        <label class="form-control-label">Title</label>
+                                                        <input type="text" name="title" placeholder="Post Title" class="form-control" required value="{{$post->title}}">
+                                                        @error('title')
+                                                            <p class="text-danger mt-1 mb-0">{{$message}}</p>
+                                                        @enderror
+                                                    </div>
+                                                    <div class="form-group">       
+                                                        <label class="form-control-label">Content</label>
+                                                        <textarea name="content" placeholder="Post Content" class="form-control" required>{{$post->content}}</textarea>
+                                                        @error('content')
+                                                            <p class="text-danger mt-1 mb-0">{{$message}}</p>
+                                                        @enderror
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="form-control-label">Image</label>
+                                                        <input type="file" name="image" placeholder="Post Image" class="form-control" value="{{$post->image}}">
+                                                        @error('image')
+                                                            <p class="text-danger mt-1 mb-0">{{$message}}</p>
+                                                        @enderror
+                                                    </div>
+                                                    <div class="form-group">       
+                                                        <input type="submit" value="Update" class="btn btn-primary">
                                                     </div>
                                                 </form>
                                             </div>

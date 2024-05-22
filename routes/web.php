@@ -21,8 +21,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
         Route::get('/add', [PostController::class, 'add'])->name('post.add');
         Route::post('/add', [PostController::class, 'store'])->name('post.store');
         Route::get('/edit/{id}', [PostController::class, 'edit'])->name('post.edit');
-        Route::post('/edit/{id}', [PostController::class, 'update'])->name('post.update');
-        Route::post('/delete/{id}', [PostController::class, 'delete'])->name('post.delete');
+        Route::patch('/update/{id}', [PostController::class, 'update'])->name('post.update');
+        Route::delete('/delete/{id}', [PostController::class, 'delete'])->name('post.delete');
     });
 });
 

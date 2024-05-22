@@ -41,6 +41,38 @@ class PostController extends Controller
         return redirect()->route('posts')->with('success', 'Post created successfully');
     }
 
+    public function edit(string $id){
+        $post = Post::find($id);
+        if ($post == null) {
+            return redirect()->route('posts')->with('error', 'Post not found');
+        }
+        return view('admin.posts', [
+            'do' => 'edit',
+            'post' => $post
+        ]);
+    }
+
+    public function update(Request $request, string $id){
+        $post = Post::find($id);
+        if ($post == null) {
+            return redirect()->route('posts')->with('error', 'Post not found');
+        }
+        $data = $request->validate([
+            'title' => 'required|max:255|string',
+            'content' => 'required|string',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:4096',
+        ]);
+        if ($request->file('image') != null) {
+            if ($post->image != 'images/posts/default.png') {
+                unlink(public_path('storage/'.$post->image));
+            }
+            $data['image'] = $request->file('image')->store('images/posts');
+        }else{
+            unset($data['image']);
+        }
+        $post->update($data);
+        return redirect()->route('posts')->with('success', 'Post updated successfully');
+    }
     public function delete($id){
         // $post = Post::find($id);
         // $post->delete();
