@@ -22,12 +22,20 @@ Route::middleware(['auth', 'admin'])->group(function () {
         Route::post('/add', [PostController::class, 'store'])->name('post.store');
         Route::get('/edit/{id}', [PostController::class, 'edit'])->name('post.edit');
         Route::patch('/update/{id}', [PostController::class, 'update'])->name('post.update');
+        Route::patch('/publishControl', [PostController::class, 'publishControl'])->name('post.publishControl');
+        Route::delete('/delete/{id}', [PostController::class, 'delete'])->name('post.delete');
         Route::delete('/delete/{id}', [PostController::class, 'delete'])->name('post.delete');
     });
 });
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    // Route::get('/post/edit', function () {
+    //     return "add <br> <a href=' " .route('post.edit')." ' >Profile</a>";
+    // })->name('post.add');
+    // Route::get('/post/add', function () {
+    //     return "edit <br> <a href=' ".route('post.add')." '>Profile</a>";
+    // })->name('post.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });

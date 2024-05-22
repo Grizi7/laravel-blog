@@ -81,10 +81,9 @@
                                                                     <a href="{{route('post.edit', $post['id'])}}"><button type="button" class="btn btn-secondy m-2">Edit</button></a>
                                                                     <a action="/posts"  onclick="event.preventDefault(); document.getElementById('delete-form-{{$post['id']}}').submit();">
                                                                     <button type="submit" class="btn btn-danger m-2">Delete</button></a>
-                                                                    <form id="delete-form-{{$post['id']}}" action="/posts" method="POST" class="d-none">
+                                                                    <form id="delete-form-{{$post['id']}}" action="{{route('post.delete', $post->id)}}" method="POST" class="d-none">
                                                                         @method('delete')
                                                                         @csrf
-                                                                        <input name="id" hidden type="text" value="{{$post['id']}}">
                                                                     </form>
                                                                     <br>
                                                                     @php
@@ -97,9 +96,10 @@
 
                                                                     @endphp
 
-                                                                    <a action="/posts/{{$publish_controller}}"  onclick="event.preventDefault(); document.getElementById('{{$publish_controller}}-form-{{$post->id}}').submit();">
-                                                                    <button type="submit" class="btn btn-warning m-2">{{$publish_controller}}</button></a>
-                                                                    <form id="{{$publish_controller}}-form-{{$post->id}}" action="/posts/{{$publish_controller}}" method="POST" class="d-none">
+                                                                    <button  
+                                                                        onclick="event.preventDefault(); document.getElementById('{{$publish_controller}}-form-{{$post->id}}').submit();"
+                                                                        type="submit" class="btn btn-warning m-2">{{$publish_controller}}</button>
+                                                                    <form id="{{$publish_controller}}-form-{{$post->id}}" action="{{route('post.publishControl', $post->id)}}" method="POST" class="d-none">
                                                                         @method('PATCH')
                                                                         @csrf
                                                                         <input name="id" hidden type="text" value="{{$post->id}}">

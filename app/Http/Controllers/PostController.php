@@ -43,7 +43,7 @@ class PostController extends Controller
 
     public function edit(string $id){
         $post = Post::find($id);
-        if ($post == null) {
+        if (!$post) {
             return redirect()->route('posts')->with('error', 'Post not found');
         }
         return view('admin.posts', [
@@ -73,11 +73,29 @@ class PostController extends Controller
         $post->update($data);
         return redirect()->route('posts')->with('success', 'Post updated successfully');
     }
+
+    public function publishControl(Request $request)
+    {
+        $post = Post::find($request->id);
+        if (!$post) {
+            return redirect()->route('posts')->with('error', 'Post not found');
+        }
+        $post->is_published = ($request->do == 'publish');
+        $post->save();
+        return redirect()->route('posts')->with('success', 'Post '. $request->do .'ed successfully');
+    }
+
     public function delete($id){
-        // $post = Post::find($id);
-        // $post->delete();
-        // return redirect()->route('posts')->with('success', 'Post deleted successfully');
-        return 'delete';
+        $post = Post::find($id);
+        if (!$post) {
+            return redirect()->route('posts')->with('error', 'Post not found');
+        }
+
+        if ($post->image != 'images/posts/default.png') {
+            unlink(public_path('storage/'.$post->image));
+        }
+        $post->delete();
+        return redirect()->route('posts')->with('success', 'Post deleted successfully');
     }
 
 }
