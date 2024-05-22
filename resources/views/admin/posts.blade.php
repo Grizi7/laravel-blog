@@ -56,6 +56,7 @@
                                                         <th>Title</th>
                                                         <th>Content</th>
                                                         <th>Publish</th>
+                                                        <th>Added By</th>
                                                         <th>Created at</th>
                                                         <th>Control</th>
                                                         </tr>
@@ -76,11 +77,11 @@
                                                                         <span class="badge badge-danger text-xl">Unpublished</span>
                                                                     @endif
                                                                 </td>
+                                                                <td>{{$post->user->name}} | {{$post->user->role}}</td>
                                                                 <td>{{$post->created_at}}</td>
                                                                 <td>
                                                                     <a href="{{route('post.edit', $post['id'])}}"><button type="button" class="btn btn-secondy m-2">Edit</button></a>
-                                                                    <a action="/posts"  onclick="event.preventDefault(); document.getElementById('delete-form-{{$post['id']}}').submit();">
-                                                                    <button type="submit" class="btn btn-danger m-2">Delete</button></a>
+                                                                    <button type="button" data-toggle="modal" data-target="#post_delete_{{$post->id}}" class="btn btn-danger m-2">Delete</button>
                                                                     <form id="delete-form-{{$post['id']}}" action="{{route('post.delete', $post->id)}}" method="POST" class="d-none">
                                                                         @method('delete')
                                                                         @csrf
@@ -118,6 +119,32 @@
                                                                         </div>
                                                                         <div class="modal-footer">
                                                                             <button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div id="post_delete_{{$post->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
+                                                                <div role="document" class="modal-dialog">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header"><strong id="exampleModalLabel" class="modal-title">Delete Post</strong>
+                                                                            <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            <div class="text-center mt-4">
+                                                                                <i class="fa fa-exclamation-triangle text-danger fa-5x"></i>
+                                                                            </div>
+                                                                            <h3>Are you sure that you want to delete this post?</h3>
+                                                                            <p class="text-danger">You won't be able to revert this action!</p>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button>
+                                                                            <button  
+                                                                                onclick="event.preventDefault(); document.getElementById('delete-form-{{$post['id']}}').submit();"
+                                                                                type="submit" class="btn btn-danger m-2">Delete</button>
+                                                                            <form id="delete-form-{{$post['id']}}" action="{{route('post.delete', $post->id)}}" method="POST" class="d-none">
+                                                                                @method('delete')
+                                                                                @csrf
+                                                                            </form>
                                                                         </div>
                                                                     </div>
                                                                 </div>
