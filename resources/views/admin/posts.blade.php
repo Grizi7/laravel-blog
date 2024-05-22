@@ -18,17 +18,23 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="block margin-bottom-sm">
-                                    @if($do == 'view')
-                                        <div class="title">
-                                            <strong>Posts Table</strong>
-                                        </div>
-                                        @if (session()->has('success'))
-                                        <div x-data="{show: true}" x-init="setTimeout( ()=> show = false, 4000)" x-show="show" class="fixed bottom-3 right-3 bg-blue-500 text-white py-2 px-2 rounded-xl text-sm">
+                                    @if (session()->has('success'))
+                                        <div id="success-alert" class="alert alert-success">
                                             <p>
                                                 {{ session()->get('success') }}
                                             </p>
                                         </div>
+
+                                        <script>
+                                            setTimeout(function(){
+                                                document.getElementById('success-alert').style.display = 'none';
+                                            }, 4000);
+                                        </script>
                                     @endif
+                                    @if($do == 'view')
+                                        <div class="title">
+                                            <strong>Posts Table</strong>
+                                        </div>
                                         <div class="table-responsive"> 
                                             <table class="table">
                                                 <thead>
