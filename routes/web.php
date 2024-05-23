@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/post/{id}', [HomeController::class, 'post'])->name('post');
 
 Route::get('/dashboard', function () {
     if (Auth::user()->role == 'admin') {

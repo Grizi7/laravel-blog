@@ -14,4 +14,13 @@ class HomeController extends Controller
             'posts' => $posts
         ]);
     }
+
+    public function post($id)
+    {
+        $post = Post::find($id);
+        return view('home.post', [
+            'post' => $post
+        ]);
+    }
+    
 }
