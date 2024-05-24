@@ -19,7 +19,7 @@ class HomeController extends Controller
     {
         $post = Post::find($id);
         if (!$post) {
-            return view('home.404');
+            return view('errors.404');
         }
         return view('home.post', [
             'post' => $post
