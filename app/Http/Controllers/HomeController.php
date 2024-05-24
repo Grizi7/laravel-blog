@@ -18,6 +18,9 @@ class HomeController extends Controller
     public function post($id)
     {
         $post = Post::find($id);
+        if (!$post) {
+            return view('home.404');
+        }
         return view('home.post', [
             'post' => $post
         ]);
