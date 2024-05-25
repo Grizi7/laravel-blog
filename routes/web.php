@@ -3,11 +3,12 @@
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\PostController as AdminPostController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/post/{id}', [HomeController::class, 'post'])->name('post');
+Route::get('/post/{id}', [PostController::class, 'show'])->name('post');
 
 Route::get('/dashboard', function () {
     if (Auth::user()->role == 'admin') {
