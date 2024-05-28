@@ -22,6 +22,7 @@ class PostController extends Controller
     {
         return view('home.add');
     }
+    
     public function store(Request $request)
     {
         $data = $request->validate([
