@@ -85,10 +85,10 @@
                                                                     <br>
                                                                     @php
                                                                         if($post->is_published){
-                                                                            $publish_controller ='Unpublish';
+                                                                            $publish_controller ='unpublish';
                                                                         }    
                                                                         else{
-                                                                            $publish_controller ='Publish';
+                                                                            $publish_controller ='publish';
                                                                         }
 
                                                                     @endphp
