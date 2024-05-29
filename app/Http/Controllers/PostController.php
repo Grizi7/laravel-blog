@@ -40,4 +40,13 @@ class PostController extends Controller
 
         return redirect()->route('home')->with('success', 'Post created successfully, please wait for approval.');
     }
+
+    public function myPosts(Request $request)
+    {
+        $user = $request->user();
+        $posts = $user->posts;
+        return view('home.myPosts', [
+            'posts' => $posts
+        ]);
+    }
 }

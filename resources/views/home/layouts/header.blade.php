@@ -32,7 +32,7 @@
                            </a>
                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" >
                               <li class="dropdown-item"><a href="{{route('profile.edit')}}">Profile</a></li>
-                              {{-- <li class="dropdown-item"><a href="">Profile</a></li> --}}
+                              <li class="dropdown-item"><a href="{{route('myPosts')}}">My Post</a></li>
                               <form method="POST" action="{{ route('logout') }}">
                                  @csrf
 
@@ -70,7 +70,7 @@
                            </a>
                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                               <li class="dropdown-item"><a href="{{route('profile.edit')}}">Profile</a></li>
-                              {{-- <li class="dropdown-item"><a href="">Profile</a></li> --}}
+                              <li class="dropdown-item"><a href="{{route('myPosts')}}">My Post</a></li>
                               <form method="POST" action="{{ route('logout') }}">
                                  @csrf
 

@@ -32,11 +32,11 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    // Route::get('/post/edit', function () {
-    //     return "add <br> <a href=' " .route('post.edit')." ' >Profile</a>";
-    // })->name('post.add');
-    Route::post('/store/post', [PostController::class, 'store'])->name('store.post');
+    Route::get('/myPosts', [PostController::class, 'myPosts'])->name('myPosts');
     Route::get('/add/post', [PostController::class, 'add'])->name('add.post');
+    Route::post('/store/post', [PostController::class, 'store'])->name('store.post');
+    Route::get('/edit/post', [PostController::class, 'edit'])->name('edit.post');
+    Route::post('/delete/post', [PostController::class, 'delete'])->name('delete.post');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
