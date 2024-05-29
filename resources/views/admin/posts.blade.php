@@ -82,10 +82,6 @@
                                                                 <td>
                                                                     <a href="{{route('post.edit', $post['id'])}}"><button type="button" class="btn btn-secondy m-2">Edit</button></a>
                                                                     <button type="button" data-toggle="modal" data-target="#post_delete_{{$post->id}}" class="btn btn-danger m-2">Delete</button>
-                                                                    <form id="delete-form-{{$post['id']}}" action="{{route('post.delete', $post->id)}}" method="POST" class="d-none">
-                                                                        @method('delete')
-                                                                        @csrf
-                                                                    </form>
                                                                     <br>
                                                                     @php
                                                                         if($post->is_published){
