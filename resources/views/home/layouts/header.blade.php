@@ -89,6 +89,24 @@
          </div>
       </div>
    </div>
+   @if(session()->has('success'))
+
+      <div class="alert alert-dismissible fade show" style="position: fixed;top: 20px;right: 20px;width: 300px;z-index: 1050;font-family: 'Arial', sans-serif;font-size: 14px;background-color: #ffffff;border: 1px solid #d4edda;box-shadow: 0 4px 8px rgba(0,0,0,0.1);" role="alert">
+         <i class="fa fa-check-circle alert-icon" style=" font-size: 1.5rem;margin-right: 0.5rem;"></i>
+         <strong>{{ session('success') }}</strong>
+         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+         </button>
+      </div>
+      <script>
+         setTimeout(function(){
+               $(".alert").alert('close');
+         }, 5000);
+         
+      </script>
+
+   @endif
+
    <!-- banner section start -->
    <div class="banner_section layout_padding">
       <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">

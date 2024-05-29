@@ -9,7 +9,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $posts = Post::latest()->limit(5)->get();
+        $posts = Post::where('is_published', true)->latest()->limit(5)->get();
         return view('home.index', [
             'posts' => $posts
         ]);

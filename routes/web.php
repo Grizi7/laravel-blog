@@ -35,9 +35,8 @@ Route::middleware('auth')->group(function () {
     // Route::get('/post/edit', function () {
     //     return "add <br> <a href=' " .route('post.edit')." ' >Profile</a>";
     // })->name('post.add');
-    // Route::get('/post/add', function () {
-    //     return "edit <br> <a href=' ".route('post.add')." '>Profile</a>";
-    // })->name('post.edit');
+    Route::post('/store/post', [PostController::class, 'store'])->name('store.post');
+    Route::get('/add/post', [PostController::class, 'add'])->name('add.post');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });

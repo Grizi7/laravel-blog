@@ -9,33 +9,34 @@
         <div class="container ">
             <div class="row justify-content-center">
                 <div class="col-md-10">
-                    <form action="{{route('post.store')}}" method="POST" enctype="multipart/form-data">
+                    <form action="{{route('store.post')}}" method="POST" enctype="multipart/form-data" class="p-4 border rounded shadow-sm mt-2">
                         @csrf
                         <div class="form-group">
-                            <label class="form-control-label">Title</label>
-                            <input type="text" name="title" placeholder="Post Title" class="form-control" required value="{{old('title')}}">
+                            <label for="title" class="form-control-label">Title</label>
+                            <input type="text" id="title" name="title" placeholder="Post Title" class="form-control" required value="{{old('title')}}">
                             @error('title')
                                 <p class="text-danger mt-1 mb-0">{{$message}}</p>
                             @enderror
                         </div>
                         <div class="form-group">       
-                            <label class="form-control-label">Content</label>
-                            <textarea name="content" placeholder="Post Content" class="form-control" required>{{old('content')}}</textarea>
+                            <label for="content" class="form-control-label">Content</label>
+                            <textarea id="content" name="content" placeholder="Post Content" class="form-control" rows="5" required>{{old('content')}}</textarea>
                             @error('content')
                                 <p class="text-danger mt-1 mb-0">{{$message}}</p>
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label class="form-control-label">Image</label>
-                            <input type="file" name="image" placeholder="Post Image" class="form-control"  value="{{old('image')}}">
+                            <label for="image" class="form-control-label">Image</label>
+                            <input type="file" id="image" name="image" placeholder="Post Image" class="form-control-file">
                             @error('image')
                                 <p class="text-danger mt-1 mb-0">{{$message}}</p>
                             @enderror
                         </div>
-                        <div class="form-group">       
-                            <input type="submit" value="Add" class="btn btn-primary">
+                        <div class="form-group text-center">       
+                            <button type="submit" class="btn btn-primary" style="width: 20%; font-size: 16px; color: #ffffff; background-color: #2b2278; text-align: center; padding: 0.9rem; border-radius: 30px; font-weight: bold;">Add</button>
                         </div>
                     </form>
+
                 </div>
             </div>
         </div>

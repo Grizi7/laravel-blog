@@ -38,6 +38,6 @@ class PostController extends Controller
         }
         Post::create($data);
 
-        return redirect()->route('home')->with('success', 'Post created successfully');
+        return redirect()->route('home')->with('success', 'Post created successfully, please wait for approval.');
     }
 }
