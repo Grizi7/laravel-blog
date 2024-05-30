@@ -15,10 +15,7 @@
                      <a class="nav-link" href="about.html">About</a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link" href="services.html">Services</a>
-                  </li>
-                  <li class="nav-item">
-                     <a class="nav-link " href="blog.html">Blog</a>
+                     <a class="nav-link" href="services.html">Posts</a>
                   </li>
                   <li class="nav-item">
                      <a class="nav-link " href="contact.html">Contact</a>
@@ -58,8 +55,7 @@
             <ul>
                <li class="active"><a href="{{route('home')}}">Home</a></li>
                <li><a href="about.html">About</a></li>
-               <li><a href="services.html">Services</a></li>
-               <li><a href="blog.html">Blog</a></li>
+               <li><a href="services.html">Posts</a></li>
                <li><a href="contact.html">Contact us</a></li>
                @if (Route::has('login'))
                   @auth
@@ -100,7 +96,7 @@
       </div>
       <script>
          setTimeout(function(){
-               $(".alert").alert('close');
+            $(".alert").alert('close');
          }, 5000);
          
       </script>

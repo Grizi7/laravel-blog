@@ -3,6 +3,7 @@
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\PostController as AdminPostController;
+use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -18,6 +19,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware(['auth', 'admin'])->group(function () {
+
     Route::prefix('posts')->group(function () {
         Route::get('/', [AdminPostController::class, 'index'])->name('posts');
         Route::get('/add', [AdminPostController::class, 'add'])->name('post.add');
@@ -28,6 +30,18 @@ Route::middleware(['auth', 'admin'])->group(function () {
         Route::delete('/delete/{id}', [AdminPostController::class, 'delete'])->name('post.delete');
         Route::delete('/delete/{id}', [AdminPostController::class, 'delete'])->name('post.delete');
     });
+
+    Route::prefix('users')->group(function () {
+        Route::get('/', [AdminUserController::class, 'index'])->name('users');
+        Route::get('/add', [AdminUserController::class, 'add'])->name('user.add');
+        Route::post('/add', [AdminUserController::class, 'store'])->name('user.store');
+        Route::get('/edit/{id}', [AdminUserController::class, 'edit'])->name('user.edit');
+        Route::patch('/update/{id}', [AdminUserController::class, 'update'])->name('user.update');
+        Route::patch('/publishControl', [AdminUserController::class, 'publishControl'])->name('user.publishControl');
+        Route::delete('/delete/{id}', [AdminUserController::class, 'delete'])->name('user.delete');
+        Route::delete('/delete/{id}', [AdminUserController::class, 'delete'])->name('user.delete');
+    });
+
 });
 
 Route::middleware('auth')->group(function () {

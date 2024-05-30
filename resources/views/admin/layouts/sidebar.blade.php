@@ -10,6 +10,7 @@
     <!-- Sidebar Navidation Menus--><span class="heading">Main</span>
     <ul class="list-unstyled">
         <li class="active"><a href="index.html"> <i class="icon-home"></i>Home </a></li>
+        <li><a href="{{route('users')}}"> <i class="fa fa-user"></i>Users</a></li>
         <li><a href="{{route('posts')}}"> <i class="icon-grid"></i>Posts</a></li>
         <li><a href="charts.html"> <i class="fa fa-bar-chart"></i>Charts </a></li>
         <li><a href="forms.html"> <i class="icon-padnote"></i>Forms </a></li>
