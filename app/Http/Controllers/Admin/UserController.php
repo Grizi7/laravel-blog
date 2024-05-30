@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 use function PHPUnit\Framework\isEmpty;
 
@@ -59,10 +60,15 @@ class UserController extends Controller
             return redirect()->route('users')->with('error', 'User not found');
         }
         $data = $request->validate([
-            'title' => 'required|max:255|string',
-            'content' => 'required|string',
+            'name' => 'required|max:255|string',
+            'email' => ['required', 'max:255', 'email', Rule::unique('users', 'email')->ignore($id)],
+            'password' => 'nullable|min:8|max:255',
+            'role' => 'required|in:admin,user',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:4096',
         ]);
+        if ($data['password'] == null) {
+            unset($data['password']);
+        }
         if ($request->file('image') != null) {
             if ($user->image != 'images/users/default.png') {
                 unlink(public_path('storage/'.$user->image));

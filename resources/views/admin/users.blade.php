@@ -92,7 +92,7 @@
                                                                             <button  
                                                                                 onclick="event.preventDefault(); document.getElementById('delete-form-{{$user['id']}}').submit();"
                                                                                 type="submit" class="btn btn-danger m-2">Delete</button>
-                                                                            <form id="delete-form-{{$user['id']}}" action="{{route('user.delete', $user->id)}}" method="USER" class="d-none">
+                                                                            <form id="delete-form-{{$user['id']}}" action="{{route('user.delete', $user->id)}}" method="POST" class="d-none">
                                                                                 @method('delete')
                                                                                 @csrf
                                                                             </form>
@@ -172,16 +172,34 @@
                                                     @csrf
                                                     @method('PATCH')
                                                     <div class="form-group">
-                                                        <label class="form-control-label">Title</label>
-                                                        <input type="text" name="title" placeholder="User Title" class="form-control" required value="{{$user->title}}">
-                                                        @error('title')
+                                                        <label class="form-control-label">Name</label>
+                                                        <input type="text" name="name" placeholder="User Name" class="form-control" required value="{{$user->name}}">
+                                                        @error('name')
+                                                            <p class="text-danger mt-1 mb-0">{{$message}}</p>
+                                                        @enderror
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="form-control-label">Email</label>
+                                                        <input type="email" name="email" placeholder="User Email" class="form-control" required value="{{$user->email}}">
+                                                        @error('email')
+                                                            <p class="text-danger mt-1 mb-0">{{$message}}</p>
+                                                        @enderror
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="form-control-label">Password</label>
+                                                        <input type="password" name="password" placeholder="User Password" class="form-control">
+                                                        <span class="form-text text-muted">Leave blank if you don't want to change the password.</span>
+                                                        @error('password')
                                                             <p class="text-danger mt-1 mb-0">{{$message}}</p>
                                                         @enderror
                                                     </div>
                                                     <div class="form-group">       
-                                                        <label class="form-control-label">Content</label>
-                                                        <textarea name="content" placeholder="User Content" class="form-control" required>{{$user->content}}</textarea>
-                                                        @error('content')
+                                                        <label class="form-control-label">Role</label>
+                                                        <select name="role" placeholder="User Role" class="form-control" required>
+                                                            <option value="admin" {{ $user->role == 'admin' ? 'selected' : '' }}>Admin</option>
+                                                            <option value="user" {{ $user->role == 'user' ? 'selected' : '' }}>User</option>
+                                                        </select>
+                                                        @error('role')
                                                             <p class="text-danger mt-1 mb-0">{{$message}}</p>
                                                         @enderror
                                                     </div>
