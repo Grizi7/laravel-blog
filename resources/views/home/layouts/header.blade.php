@@ -12,7 +12,7 @@
                      <a class="nav-link" href="{{route('home')}}">Home</a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link" href="about.html">About</a>
+                     <a class="nav-link" href="{{route('about')}}">About</a>
                   </li>
                   <li class="nav-item">
                      <a class="nav-link" href="services.html">Posts</a>
@@ -54,7 +54,7 @@
          <div class="menu_main">
             <ul>
                <li class="active"><a href="{{route('home')}}">Home</a></li>
-               <li><a href="about.html">About</a></li>
+               <li><a href="{{route('about')}}">About</a></li>
                <li><a href="services.html">Posts</a></li>
                <li><a href="contact.html">Contact us</a></li>
                @if (Route::has('login'))
