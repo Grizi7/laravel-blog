@@ -116,19 +116,36 @@
                                                 <strong class="d-block">Add User</strong>
                                             </div>
                                             <div class="block-body">
-                                                <form action="{{route('user.store')}}" method="USER" enctype="multipart/form-data">
+                                                <form action="{{route('user.store')}}" method="POST" enctype="multipart/form-data">
                                                     @csrf
                                                     <div class="form-group">
-                                                        <label class="form-control-label">Title</label>
-                                                        <input type="text" name="title" placeholder="User Title" class="form-control" required value="{{old('title')}}">
-                                                        @error('title')
+                                                        <label class="form-control-label">Name</label>
+                                                        <input type="text" name="name" placeholder="User Name" class="form-control" required value="{{old('name')}}">
+                                                        @error('name')
+                                                            <p class="text-danger mt-1 mb-0">{{$message}}</p>
+                                                        @enderror
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="form-control-label">Email</label>
+                                                        <input type="email" name="email" placeholder="User Email" class="form-control" required value="{{old('email')}}">
+                                                        @error('email')
+                                                            <p class="text-danger mt-1 mb-0">{{$message}}</p>
+                                                        @enderror
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="form-control-label">Password</label>
+                                                        <input type="password" name="password" placeholder="User Password" class="form-control" required value="{{old('password')}}">
+                                                        @error('password')
                                                             <p class="text-danger mt-1 mb-0">{{$message}}</p>
                                                         @enderror
                                                     </div>
                                                     <div class="form-group">       
-                                                        <label class="form-control-label">Content</label>
-                                                        <textarea name="content" placeholder="User Content" class="form-control" required>{{old('content')}}</textarea>
-                                                        @error('content')
+                                                        <label class="form-control-label">Role</label>
+                                                        <select name="role" placeholder="User Role" class="form-control" required>
+                                                            <option value="admin">Admin</option>
+                                                            <option value="user">User</option>
+                                                        </select>
+                                                        @error('role')
                                                             <p class="text-danger mt-1 mb-0">{{$message}}</p>
                                                         @enderror
                                                     </div>
@@ -151,7 +168,7 @@
                                                 <strong class="d-block">Edit User</strong>
                                             </div>
                                             <div class="block-body">
-                                                <form action="{{route('user.update', $user->id)}}" method="USER" enctype="multipart/form-data">
+                                                <form action="{{route('user.update', $user->id)}}" method="POST" enctype="multipart/form-data">
                                                     @csrf
                                                     @method('PATCH')
                                                     <div class="form-group">

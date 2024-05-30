@@ -26,19 +26,20 @@ class UserController extends Controller
     
     public function store(Request $request){
         $data = $request->validate([
-            'title' => 'required|max:255|string',
-            'content' => 'required|string',
+            'name' => 'required|max:255|string',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:8|max:255',
+            'role' => 'required|in:admin,user',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:4096',
         ]);
-        $data['user_id'] = auth()->id();
-        $data['is_published'] = true;
         if ($request->file('image') != null) {
             $data['image'] = $request->file('image')->store('images/users');
         }else{
             $data['image'] = 'images/users/default.png';
         }
+        $data['email_verified_at'] = now();
         User::create($data);
-        return redirect()->route('users')->with('success', 'User created successfully');
+        return redirect()->route('users')->with('success', $data['role'].' created successfully');
     }
 
     public function edit(string $id){
