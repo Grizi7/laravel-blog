@@ -12,7 +12,11 @@
                         </p>
 
                         <span class="text-secondary d-block mt-3 p-2">
-                            Added by <a href="http://localhost:8000/user/{{$post->user->id}}" class="text-primary">{{$post->user->name}}</a> on {{$post->created_at->diffForHumans()}}
+                            Added by <a href="http://localhost:8000/user/{{$post->user->id}}" class="text-primary">{{$post->user->name}}</a> 
+                            @if($post->user->role == 'admin')
+                                <i class="fa fa-check-circle"></i>
+                            @endif
+                            <br> {{$post->created_at->diffForHumans()}}
                         </span>
                         <div class="btn_main"><a href="{{route('post', $post->id)}}">Read more</a></div>
                     </div>

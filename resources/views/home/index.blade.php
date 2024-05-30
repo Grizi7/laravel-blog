@@ -9,7 +9,7 @@
       <!-- header section end -->
 
       <!-- services section start -->
-      @include('home.layouts.services')
+      @include('home.layouts.posts')
       <!-- services section end -->
       <!-- about section start -->
       @include('home.layouts.about')

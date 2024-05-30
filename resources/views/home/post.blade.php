@@ -20,7 +20,12 @@
                             </p>
                         </div>
                         <div class="card-footer text-muted d-flex justify-content-between">
-                            <span>Added by <a href="{{ url('/user/' . $post->user->id) }}" class="text-primary">{{ $post->user->name }}</a> on {{ $post->created_at->diffForHumans() }}</span>
+                            <span>Added by <a href="{{ url('/user/' . $post->user->id) }}" class="text-primary">{{ $post->user->name }}</a> 
+                                @if($post->user->role == 'admin')
+                                    <i class="fa fa-check-circle"></i>
+                                @endif
+                                <br> {{ $post->created_at->diffForHumans() }}
+                            </span>
                             <div class="getquote_bt"><a href="{{ url('/posts') }}">Back to Posts</a></div>
                         </div>
                     </div>
