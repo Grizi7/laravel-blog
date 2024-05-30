@@ -12,7 +12,7 @@
                         </p>
 
                         <span class="text-secondary d-block mt-3 p-2">
-                            Added by <a href="http://localhost:8000/user/{{$post->user->id}}" class="text-primary">{{$post->user->name}}</a> 
+                            Added by <a href="{{route('user', $post->user->id)}}" class="text-primary">{{$post->user->name}}</a> 
                             @if($post->user->role == 'admin')
                                 <i class="fa fa-check-circle"></i>
                             @endif

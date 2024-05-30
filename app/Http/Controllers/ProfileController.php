@@ -3,14 +3,30 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 
+
 class ProfileController extends Controller
 {
+    /**
+     * Display the user's profile form.
+     */
+    public function show($id): View
+    {
+        $user = User::find($id);
+        if (!$user) {
+            return view('errors.404');
+        }
+        return view('home.profile', [
+            'user' => $user,
+        ]);
+    }
+
     /**
      * Display the user's profile form.
      */

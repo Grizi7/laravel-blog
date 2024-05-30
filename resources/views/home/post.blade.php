@@ -20,7 +20,7 @@
                             </p>
                         </div>
                         <div class="card-footer text-muted d-flex justify-content-between">
-                            <span>Added by <a href="{{ url('/user/' . $post->user->id) }}" class="text-primary">{{ $post->user->name }}</a> 
+                            <span>Added by <a href="{{route('user', $post->user->id)}}" class="text-primary">{{ $post->user->name }}</a> 
                                 @if($post->user->role == 'admin')
                                     <i class="fa fa-check-circle"></i>
                                 @endif
