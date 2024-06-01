@@ -5,7 +5,7 @@
         <div class="services_section_2">
             <div class="row">
                 @foreach($posts as $post)
-                    <div class="col-md-4">
+                    <div class="col-md-4 mt-2">
                         <div><img style="margin-bottom:20px; height:200px; width:350px;" src="{{ asset('storage/'. $post->image) }}" class="services_img rounded"></div>
                         <p class="services_text text-muted text-justify mt-2 p-2">
                             <x-truncated-text :text="$post->content" limit="100" :link="route('post', $post->id)" />
@@ -22,6 +22,10 @@
                     </div>
                 @endforeach
             </div>
+            <div class="d-flex justify-content-center mt-4">
+                {{ $posts->links('vendor.pagination.bootstrap-5') }}
+            </div>
+
         </div>
     </div>
 </div>

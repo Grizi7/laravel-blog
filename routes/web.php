@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
+Route::get('/blog', [PostController::class, 'index'])->name('blog.posts');
 Route::get('/post/{id}', [PostController::class, 'show'])->name('post');
 Route::get('/user/{id}', [ProfileController::class, 'show'])->name('user');
 

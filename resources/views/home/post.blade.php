@@ -26,7 +26,7 @@
                                     @endif
                                     <br> {{ $post->created_at->diffForHumans() }}
                                 </span>
-                                <div class="getquote_bt"><a href="{{ url('/posts') }}">Back to Posts</a></div>
+                                <div class="getquote_bt"><a href="{{ route('blog.posts') }}">Back to Posts</a></div>
                             </div>
                         </div>
                         <!-- Comments section start -->

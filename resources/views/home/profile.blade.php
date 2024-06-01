@@ -39,26 +39,28 @@
             @endif
          </h1>
          <div class="posts">
-            <h2 class="mb-4 banner_taital" style="color: #2b2278">Posts</h2>
-            @forelse ($user->posts as $post)
-               <div class="col-md-4">
-                  <div><img style="margin-bottom:20px; height:200px; width:350px;" src="{{ asset('storage/'. $post->image) }}" class="services_img rounded"></div>
-                  <p class="services_text text-muted text-justify mt-2 p-2">
-                     <x-truncated-text :text="$post->content" limit="100" :link="route('post', $post->id)" />
-                  </p>
+            <div class="row">
+               <h2 class="mb-4 banner_taital" style="color: #2b2278">Posts</h2>
+               @forelse ($user->posts as $post)
+                  <div class="col-md-4">
+                     <div><img style="margin-bottom:20px; height:200px; width:350px;" src="{{ asset('storage/'. $post->image) }}" class="services_img rounded"></div>
+                     <p class="services_text text-muted text-justify mt-2 p-2">
+                        <x-truncated-text :text="$post->content" limit="100" :link="route('post', $post->id)" />
+                     </p>
 
-                  <span class="text-secondary d-block mt-3 p-2">
-                     Added by <a href="{{route('user', $post->user->id)}}" class="text-primary">{{$post->user->name}}</a> 
-                     @if($post->user->role == 'admin')
-                        <i class="fa fa-check-circle"></i>
-                     @endif
-                     <br> {{$post->created_at->diffForHumans()}}
-                  </span>
-                  <div class="btn_main"><a href="{{route('post', $post->id)}}">Read more</a></div>
-               </div>
-            @empty
-               <p>No posts yet.</p>
-            @endforelse
+                     <span class="text-secondary d-block mt-3 p-2">
+                        Added by <a href="{{route('user', $post->user->id)}}" class="text-primary">{{$post->user->name}}</a> 
+                        @if($post->user->role == 'admin')
+                           <i class="fa fa-check-circle"></i>
+                        @endif
+                        <br> {{$post->created_at->diffForHumans()}}
+                     </span>
+                     <div class="btn_main"><a href="{{route('post', $post->id)}}">Read more</a></div>
+                  </div>
+               @empty
+                  <p>No posts yet.</p>
+               @endforelse
+            </div>
          </div>
       </div>
 

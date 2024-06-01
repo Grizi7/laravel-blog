@@ -7,9 +7,16 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+    public function index()
+    {
+        $posts = Post::where('is_published', true)->paginate(6);
+        return view('home.posts', [
+            'posts' => $posts
+        ]);
+    }
     public function show($id)
     {
-        $post = Post::find($id);
+        $post = Post::find($id)->where('is_published', true)->first();
         if (!$post) {
             return view('errors.404');
         }
