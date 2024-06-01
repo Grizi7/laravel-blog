@@ -101,13 +101,15 @@
                                 if(response.success) {
                                     $('#commentForm')[0].reset();
                                     $('#errorMessages').html('');
+                                    dayjs.extend(window.dayjs_plugin_relativeTime);
+                                    let formattedDate = dayjs(response.comment.created_at).fromNow();
                                     let newComment = `
                                         <div class="media mb-3">
                                             <img src="${response.user.image}" class="mr-3 rounded-circle" alt="${response.user.name}" width="50">
                                             <div class="media-body">
                                                 <h5 class="mt-0">${response.user.name}</h5>
                                                 <p>${response.comment.body}</p>
-                                                <small class="text-muted">${response.comment.created_at}</small>
+                                                <small class="text-muted">${formattedDate}</small>
                                             </div>
                                         </div>
                                     `;

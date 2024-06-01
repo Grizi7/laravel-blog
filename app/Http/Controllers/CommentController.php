@@ -26,7 +26,7 @@ class CommentController extends Controller
         $data['user_id'] = auth()->id();
         $data['post_id'] = $id;
 
-        $comment =Comment::create($data);
+        $comment = Comment::create($data);
 
         return response()->json([
             'success' => true,
