@@ -4,6 +4,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\PostController as AdminPostController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -54,6 +55,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/edit/post/{id}', [PostController::class, 'edit'])->name('edit.post');
     Route::patch('/update/post/{id}', [PostController::class, 'update'])->name('update.post');
     Route::delete('/delete/post/{id}', [PostController::class, 'delete'])->name('delete.post');
+    Route::post('/comment/add/{id}', [CommentController::class, 'store'])->name('store.comment');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
