@@ -29,6 +29,26 @@
                             <div class="getquote_bt"><a href="{{ url('/posts') }}">Back to Posts</a></div>
                         </div>
                     </div>
+                    <!-- Comments section start -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h4>Comments</h4>
+                        </div>
+                        <div class="card-body">
+                            @foreach($post->comments as $comment)
+                                <div class="media mb-3">
+                                    <img src="{{ asset('storage/' . $comment->user->image) }}" class="mr-3 rounded-circle" alt="{{ $comment->user->name }}" width="50">
+                                    <div class="media-body">
+                                        <h5 class="mt-0">{{ $comment->user->name }}</h5>
+                                        <p>{{ $comment->content }}</p>
+                                        <small class="text-muted">{{ $comment->created_at->diffForHumans() }}</small>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+
+                  
                 </div>
             </div>
         </div>
