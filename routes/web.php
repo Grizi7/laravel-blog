@@ -56,7 +56,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/edit/post/{id}', [PostController::class, 'edit'])->name('edit.post');
     Route::patch('/update/post/{id}', [PostController::class, 'update'])->name('update.post');
     Route::delete('/delete/post/{id}', [PostController::class, 'delete'])->name('delete.post');
-    Route::post('/comment/add/{id}', [CommentController::class, 'store'])->name('store.comment');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
