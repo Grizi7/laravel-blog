@@ -28,6 +28,10 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+        $token = auth()->user()->accessToken = Auth::user()->createToken('api_token')->plainTextToken;
+
+        $request->session()->put('user_token', $token);
+
         return redirect()->intended(route('home', absolute: false));
     }
 
