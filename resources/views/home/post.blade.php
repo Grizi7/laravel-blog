@@ -30,38 +30,40 @@
                             </div>
                         </div>
                         <!-- Comments section start -->
-                        <div class="card mb-4">
-                            <div class="card-header">
-                                <h4>Comments</h4>
-                            </div>
-                            <div class="card-body card-body-comments">
-                                @foreach($post->comments as $comment)
-                                    <div class="media mb-3">
-                                        <img src="{{ asset('storage/' . $comment->user->image) }}" class="mr-3 rounded-circle" alt="{{ $comment->user->name }}" width="50">
-                                        <div class="media-body">
-                                            <h5 class="mt-0">{{ $comment->user->name }}</h5>
-                                            <p>{{ $comment->body }}</p>
-                                            <small class="text-muted">{{ $comment->created_at->diffForHumans() }}</small>
-                                        </div>
-                                    </div>
-                                @endforeach
-                            </div>
-                            @if(auth()->user())
-                                <div class="card-body p-2 mx-2">
-                                    <form id="commentForm">
-                                        @csrf
-                                        <div class="form-group">
-                                            <label for="comment">Comment</label>
-                                            <textarea name="body" id="comment" class="form-control" required placeholder="What is your comment?"></textarea>
-                                        </div>
-                                        <input type="hidden" name="id" value="{{ $post->id }}">
-                                        <input type="hidden" name="user_token" value="{{ session()->get('user_token') }}">
-                                        <button type="submit" class="btn btn-primary float-right" style="width: 20%; font-size: 16px; color: #ffffff; background-color: #2b2278; text-align: center; padding: 0.5rem; border-radius: 30px; font-weight: bold;">Add Comment</button>
-                                        <div id="errorMessages" class="text-danger mt-3"></div>
-                                    </form>
+                        @if(auth()->user() || $post->comments->count() > 0)
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <h4>Comments</h4>
                                 </div>
-                            @endif
-                        </div>
+                                <div class="card-body card-body-comments">
+                                    @foreach($post->comments as $comment)
+                                        <div class="media mb-3">
+                                            <img src="{{ asset('storage/' . $comment->user->image) }}" class="mr-3 rounded-circle" alt="{{ $comment->user->name }}" width="50">
+                                            <div class="media-body">
+                                                <h5 class="mt-0">{{ $comment->user->name }}</h5>
+                                                <p>{{ $comment->body }}</p>
+                                                <small class="text-muted">{{ $comment->created_at->diffForHumans() }}</small>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                                @if(auth()->user())
+                                    <div class="card-body p-2 mx-2">
+                                        <form id="commentForm">
+                                            @csrf
+                                            <div class="form-group">
+                                                <label for="comment">Comment</label>
+                                                <textarea name="body" id="comment" class="form-control" required placeholder="What is your comment?"></textarea>
+                                            </div>
+                                            <input type="hidden" name="id" value="{{ $post->id }}">
+                                            <input type="hidden" name="user_token" value="{{ session()->get('user_token') }}">
+                                            <button type="submit" class="btn btn-primary float-right" style="width: 20%; font-size: 16px; color: #ffffff; background-color: #2b2278; text-align: center; padding: 0.5rem; border-radius: 30px; font-weight: bold;">Add Comment</button>
+                                            <div id="errorMessages" class="text-danger mt-3"></div>
+                                        </form>
+                                    </div>
+                                @endif
+                            </div>
+                        @endif
 
                     
                     </div>
