@@ -10,11 +10,15 @@ class CallRequestController extends Controller
     public function index(){
         $requests = CallRequest::all();
         return view('admin.callRequests', [
-            'do' => 'view',
             'requests' => $requests
         ]);
     }
     
+    public function delete($id){
+        CallRequest::destroy($id);
+        return redirect()->route('call-requests')->with('success', 'Request deleted successfully.');
+    }    
+
     public function store(Request $request){
         
         $data = $request->validate([
