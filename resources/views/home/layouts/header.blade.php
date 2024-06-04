@@ -18,7 +18,7 @@
                      <a class="nav-link" href="{{ route('blog.posts') }}">Posts</a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link " href="contact.html">Contact</a>
+                     <a class="nav-link " href="{{ route('contact') }}">Contact</a>
                   </li>
                   @if (Route::has('login'))
                      @auth
@@ -56,7 +56,7 @@
                <li class="active"><a href="{{route('home')}}">Home</a></li>
                <li><a href="{{route('about')}}">About</a></li>
                <li><a href="{{ route('blog.posts') }}">Posts</a></li>
-               <li><a href="contact.html">Contact us</a></li>
+               <li><a href="{{ route('contact') }}">Contact us</a></li>
                @if (Route::has('login'))
                   @auth
                      <li>
