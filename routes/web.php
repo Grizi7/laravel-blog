@@ -4,7 +4,6 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\PostController as AdminPostController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
-use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -42,7 +41,6 @@ Route::middleware(['auth', 'admin'])->group(function () {
         Route::post('/add', [AdminUserController::class, 'store'])->name('user.store');
         Route::get('/edit/{id}', [AdminUserController::class, 'edit'])->name('user.edit');
         Route::patch('/update/{id}', [AdminUserController::class, 'update'])->name('user.update');
-        Route::patch('/publishControl', [AdminUserController::class, 'publishControl'])->name('user.publishControl');
         Route::delete('/delete/{id}', [AdminUserController::class, 'delete'])->name('user.delete');
         Route::delete('/delete/{id}', [AdminUserController::class, 'delete'])->name('user.delete');
     });
