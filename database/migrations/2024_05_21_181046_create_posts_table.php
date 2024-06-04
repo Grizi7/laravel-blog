@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->boolean('is_published')->default(false);
             $table->foreignId('user_id')->references('id')->on('users');
+            $table->integer('visits')->default(0);
             $table->timestamps();
         });
     }

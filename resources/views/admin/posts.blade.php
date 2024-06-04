@@ -55,6 +55,7 @@
                                                         <th>Image</th>
                                                         <th>Title</th>
                                                         <th>Content</th>
+                                                        <th>Stats</th>
                                                         <th>Publish</th>
                                                         <th>Added By</th>
                                                         <th>Created at</th>
@@ -69,6 +70,9 @@
                                                                 <td>{{$post->title}}</td>
                                                                 <td>
                                                                     <button type="button" data-toggle="modal" data-target="#post_content_{{$post->id}}" class="btn btn-primary">Content</button>
+                                                                </td>
+                                                                <td>
+                                                                    <button type="button" data-toggle="modal" data-target="#post_stats_{{$post->id}}" class="btn btn-info">Stats</button>
                                                                 </td>
                                                                 <td>
                                                                     @if($post->is_published)
@@ -149,6 +153,50 @@
                                                     </tbody>
                                                 </table>
                                             </div>
+                                            @foreach($posts as $post)
+                                                <div id="post_stats_{{$post->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
+                                                    <div role="document" class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header"><strong id="exampleModalLabel" class="modal-title">Post Stats</strong>
+                                                                <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <span class="text-xl font-wieght-bold">Visits</span>: {{$post->visits}}<br>
+                                                                <span class="text-xl font-wieght-bold">Comments</span>: {{$post->comments->count()}}<br>
+                                                                @if ($post->comments->count() > 0)
+                                            
+                                                                    <div class="table-responsive"> 
+                                                                        <table class="table">
+                                                                            <thead>
+                                                                                <tr>
+                                                                                    <th>#</th>
+                                                                                    <th>Comment</th>
+                                                                                    <th>Added By</th>
+                                                                                    <th>Created at</th>
+                                                                                </tr>
+                                                                                <tbody>
+                                                                                    @foreach($post->comments as $comment)
+                                                                                        <tr>
+                                                                                            <th scope="row">{{$comment->id}}</th>
+                                                                                            <td>{{$comment->body}}</td>
+                                                                                            <td>{{$comment->user->name}}</td>
+                                                                                            <td>{{$comment->created_at}}</td>
+                                                                                        </tr>
+                                                                                    @endforeach
+                                                                                </tbody>
+                                                                            </thead>
+                                                                        </table>
+                                                                    </div>
+                                                                @endif
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>        
+                                                
+                                            @endforeach
                                         @else
                                             <div class="alert alert-danger">
                                                 <p>No Posts Found</p>

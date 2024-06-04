@@ -20,6 +20,7 @@ class PostController extends Controller
         if (!$post) {
             return view('errors.404');
         }
+        $post->increment('visits');
         return view('home.post', [
             'post' => $post
         ]);
