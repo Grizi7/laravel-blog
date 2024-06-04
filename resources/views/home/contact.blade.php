@@ -12,18 +12,31 @@
          <div class="container">
             <h1 class="contact_taital">Request A Call Back</h1>
             <div class="email_text">
-               <form action="" method="POST">
+               <form action="{{route('contact.sent')}}" method="POST">
+                  @csrf
                   <div class="form-group">
-                     <input type="text" class="email-bt" required name="name" placeholder="Name" >
+                     <input type="text" class="email-bt" required name="name" value="{{old('name')}}" placeholder="Name" >
+                     @error('name')
+                        <p class="text-danger mt-1 mb-0">{{$message}}</p>
+                     @enderror
                   </div>
                   <div class="form-group">
-                     <input type="text" class="email-bt" required name="phone"  placeholder="Phone Numbar" >
+                     <input type="text" class="email-bt" required name="phone"  value="{{old('phone')}}" placeholder="Phone Numbar" >
+                     @error('phone')
+                        <p class="text-danger mt-1 mb-0">{{$message}}</p>
+                     @enderror
                   </div>
                   <div class="form-group">
-                     <input type="email" class="email-bt" required name="email" placeholder="Email" >
+                     <input type="email" class="email-bt" required name="email" value="{{old('email')}}" placeholder="Email" >
+                     @error('email')
+                        <p class="text-danger mt-1 mb-0">{{$message}}</p>
+                     @enderror
                   </div>
                   <div class="form-group">
-                     <textarea class="massage-bt" required placeholder="Massage" rows="5" id="comment" name="Massage"></textarea>
+                     <textarea class="massage-bt" required  placeholder="Message" rows="5" id="comment" name="message">{{old('message')}}</textarea>
+                     @error('message')
+                        <p class="text-danger mt-1 mb-0">{{$message}}</p>
+                     @enderror
                   </div>
                   <div class="send_btn"><button type="submit" class="black-button">SEND</button></div>
                </form>
