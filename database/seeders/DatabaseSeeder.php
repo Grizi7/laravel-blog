@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\CallRequest;
 use App\Models\User;
 use App\Models\Post;
 use App\Models\Comment;
@@ -30,5 +31,7 @@ class DatabaseSeeder extends Seeder
         Post::factory(10)->create();
 
         Comment::factory(10)->create();
+
+        CallRequest::factory(10)->create();
     }
 }
