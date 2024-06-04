@@ -69,9 +69,9 @@
                                                             <td>{{$request->email}}</td>
                                                             <td>{{$request->phone}}</td>
                                                             <td>
-                                                                <button type="button" data-toggle="modal" data-target="#request_{{$request->id}}" class="btn btn-secondary m-2">Message</button>
+                                                                <button type="button" data-id="{{$request->id}}" data-token="{{session()->get('user_token')}}" data-toggle="modal" data-target="#request_{{$request->id}}" class="btn btn-secondary m-2 readRequest">Message</button>
                                                             </td>
-                                                            <td>
+                                                            <td class="requestStatus">
                                                                 @if($request->is_read)
                                                                     <span class="badge badge-success text-xl">Read</span>
                                                                 @else
@@ -145,5 +145,6 @@
         </div>
         <!-- JavaScript files-->
         @include('admin.layouts.scripts')
+        @stack('read_request_script')
     </body>
 </html>

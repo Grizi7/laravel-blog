@@ -14,11 +14,7 @@ class CallRequestController extends Controller
         ]);
     }
     
-    public function delete($id){
-        CallRequest::destroy($id);
-        return redirect()->route('call-requests')->with('success', 'Request deleted successfully.');
-    }    
-
+    
     public function store(Request $request){
         
         $data = $request->validate([
@@ -29,7 +25,21 @@ class CallRequestController extends Controller
         ]);
         
         CallRequest::create($data);
-
+        
         return redirect()->route('contact')->with('success', 'Message sent successfully, please wait for our reply.');
     }
+
+    public function read($id){
+        $request = CallRequest::find($id);
+        $request->is_read = true;
+        $request->save();
+        return response()->json([
+            'success' => true,
+        ]);
+    }
+
+    public function delete($id){
+        CallRequest::destroy($id);
+        return redirect()->route('call-requests')->with('success', 'Request deleted successfully.');
+    }    
 }
