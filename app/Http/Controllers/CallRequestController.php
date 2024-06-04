@@ -7,6 +7,14 @@ use Illuminate\Http\Request;
 
 class CallRequestController extends Controller
 {
+    public function index(){
+        $requests = CallRequest::all();
+        return view('admin.callRequests', [
+            'do' => 'view',
+            'requests' => $requests
+        ]);
+    }
+    
     public function store(Request $request){
         
         $data = $request->validate([
