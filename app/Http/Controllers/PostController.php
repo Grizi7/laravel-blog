@@ -16,11 +16,10 @@ class PostController extends Controller
     }
     public function show($id)
     {
-        $post = Post::find($id)->where('is_published', true)->first();
-        if (!$post) {
-            return view('errors.404');
-        }
-        $post->increment('visits');
+        $post = Post::where('is_published', true)->findOrFail($id);
+
+        $post->increment('visits', 1);
+
         return view('home.post', [
             'post' => $post
         ]);
