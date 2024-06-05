@@ -18,10 +18,8 @@ class ProfileController extends Controller
      */
     public function show($id): View
     {
-        $user = User::find($id);
-        if (!$user) {
-            return view('errors.404');
-        }
+        $user = User::findOrFail($id);
+        
         return view('home.profile', [
             'user' => $user,
         ]);
