@@ -19,6 +19,8 @@ class ProfileController extends Controller
     public function show($id): View
     {
         $user = User::findOrFail($id);
+
+        $user->increment('visits', 1);
         
         return view('home.profile', [
             'user' => $user,
