@@ -1,66 +1,105 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
-
+# World Blog
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+<li> Welcome to World Blog application, designed  for allowing users to view and comment on blogs and articles while admins can write, edit and delete them. </li>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+##  📝Table of content
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
+- [Built Using](#built).
+- [Features](#features).
+- [Requirements](#requirements).
+- [Installation Steps](#installation).
+- [Acknowledgements](#acknowledgements).
+- [Screenshots](#screens).
 
-## Learning Laravel
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## ⛏️ Built Using <a name = "built"></a>
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+---
+- [MySQL](https://www.mongodb.com/) - Database
+- [PHP](https://www.php.net/) - Programming Language
+- [Laravel](https://laravel.com/) - Web Framework
+- [Tailwind Css](https://tailwindcss.com/) - Css Framework
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 🧐Features <a name = "features"></a>
 
-## Laravel Sponsors
+---
+- Login, Registration and logout
+- Email verification and Password Reset
+<!-- - search and filtering articles by title, body, category and author -->
+- create, edit and delete articles for admins and post creator.
+- view and comment on articles by users and admins
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## 🔧Requirements <a name = "requirements"></a>
 
-### Premium Partners
+---
+- PHP => 8.2
+- Laravel => 11
+- composer
+- MySQL
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+## 🚀 Installation Steps <a name = "installation"></a>
 
-## Contributing
+---
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+First clone this repository, install the dependencies, and setup your .env file.
 
-## Code of Conduct
+```
+git clone https://github.com/Grizi7/world-blog.git
+composer install
+cp .env.example .env
+```
+add your Database credentials to your .env file and run this command to generate the app key, create and seed the database
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```
+php artisan key:generate
+php artisan migrate --seed
+php artisan storage:link
+```
 
-## Security Vulnerabilities
+run the project using the following command
+```
+php artisan serve
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### Admin credentials
+- email : grizi@example.com
+- password : password
 
-## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+## 📷 Screenshots <a name = "screens"></a>
+
+---
+
+<!-- ### Home page
+<img src="https://github.com/VlixAli/Laracast-Blogs/blob/master/screenshots/home.PNG?raw=true"/>
+
+### Login
+<img src="https://github.com/VlixAli/Laracast-Blogs/blob/master/screenshots/login.PNG?raw=true"/>
+
+### Register
+<img src="https://github.com/VlixAli/Laracast-Blogs/blob/master/screenshots/register.PNG?raw=true"/>
+
+### View an article
+<img src="https://github.com/VlixAli/Laracast-Blogs/blob/master/screenshots/article%20page.PNG?raw=true"/>
+
+### Create an article
+<img src="https://github.com/VlixAli/Laracast-Blogs/blob/master/screenshots/create%20article.PNG?raw=true"/>
+
+### Edit an article
+<img src="https://github.com/VlixAli/Laracast-Blogs/blob/master/screenshots/edit%20post.PNG?raw=true"/>
+
+### Comments on an article
+<img src="https://github.com/VlixAli/Laracast-Blogs/blob/master/screenshots/comments.PNG?raw=true"/>
+
+### Make a comment
+<img src="https://github.com/VlixAli/Laracast-Blogs/blob/master/screenshots/make%20comment.PNG?raw=true">
+
+### Admin articles dashboard 
+<img src="https://github.com/VlixAli/Laracast-Blogs/blob/master/screenshots/manage%20posts%20dashboard.PNG?raw=true"> -->
