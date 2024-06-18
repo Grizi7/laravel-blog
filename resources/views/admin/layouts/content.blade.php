@@ -58,7 +58,7 @@
                                     <div class="contributions">{{$user->posts->count()+$user->comments->count()}} Contributions</div>
                                     <div class="details d-flex">
                                         <div class="item"><i class="icon-info"></i><strong>{{$user->vists}}</strong> Vists</div>
-                                        <div class="item"><i class="fa fa-gg"></i><strong>{{$user->posts->count()}}</strong> Posts</div>
+                                        <div class="item"><i class="icon icon-paper-and-pencil"></i><strong>{{$user->posts->count()}}</strong> Posts</div>
                                         <div class="item"><i class="icon-flow-branch"></i><strong>{{$user->comments->count()}}</strong> Comments</div>
                                     </div>
                                 </div>
@@ -81,7 +81,7 @@
                                     <div class="col-lg-4">
                                         <div class="details d-flex">
                                             <div class="item"><i class="icon-info"></i><strong>{{$user->visits}}</strong> Visits</div>
-                                            <div class="item"><i class="fa fa-gg"></i><strong>{{$user->posts->count()}}</strong> Posts</div>
+                                            <div class="item"><i class="icon icon-paper-and-pencil"></i><strong>{{$user->posts->count()}}</strong> Posts</div>
                                             <div class="item"><i class="icon-flow-branch"></i><strong>{{$user->comments->count()}}</strong> Comments</div>
                                         </div>
                                     </div>

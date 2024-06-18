@@ -9,10 +9,27 @@
     </div>
     <!-- Sidebar Navidation Menus--><span class="heading">Main</span>
     <ul class="list-unstyled">
-        <li class="active"><a href="index.html"> <i class="icon-home"></i>Home </a></li>
-        <li><a href="{{route('users')}}"> <i class="fa fa-user"></i>Users</a></li>
-        <li><a href="{{route('posts')}}"> <i class="icon-grid"></i>Posts</a></li>
-        <li><a href="{{route('call-requests')}}"> <i class="fa fa-envelope"></i>Call Requests</a></li>
+        <li class="{{ request()->routeIs('admin') ? 'active' : '' }}">
+            <a href="{{ route('admin') }}">
+                <i class="icon-home"></i>Dashboard
+            </a>
+        </li>
+        <li class="{{ request()->routeIs('users') ? 'active' : '' }}">
+            <a href="{{ route('users') }}">
+                <i class="fa fa-user"></i>Users
+            </a>
+        </li>
+        <li class="{{ request()->routeIs('posts') ? 'active' : '' }}">
+            <a href="{{ route('posts') }}">
+                <i class="icon-grid"></i>Posts
+            </a>
+        </li>
+        <li class="{{ request()->routeIs('call-requests') ? 'active' : '' }}">
+            <a href="{{ route('call-requests') }}">
+                <i class="fa fa-envelope"></i>Call Requests
+            </a>
+        </li>
     </ul>
+
 </nav>
             
