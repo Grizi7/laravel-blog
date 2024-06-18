@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\PostController as AdminPostController;
@@ -25,7 +26,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware(['auth', 'admin'])->group(function () {
-
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin');;
     Route::prefix('posts')->group(function () {
         Route::get('/', [AdminPostController::class, 'index'])->name('posts');
         Route::get('/add', [AdminPostController::class, 'add'])->name('post.add');

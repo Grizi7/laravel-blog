@@ -11,5 +11,6 @@
         </div>
         <!-- JavaScript files-->
         @include('admin.layouts.scripts')
+        @stack('read_request_script')
     </body>
 </html>
