@@ -124,9 +124,17 @@ class PostController extends Controller
 
     public function search(Request $request)
     {
+        $searchTerm = $request->search;
+
         $posts = Post::where('is_published', true)
-            ->where('title', 'like', '%' . $request->search . '%')
-            ->orWhere('content', 'like', '%' . $request->search . '%')->get();
+            ->where(function ($query) use ($searchTerm) {
+                $query->where('title', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('content', 'like', '%' . $searchTerm . '%')
+                    ->orWhereHas('user', function ($q) use ($searchTerm) {
+                        $q->where('name', 'like', '%' . $searchTerm . '%');
+                    });
+            })->get();
+            
         return response()->json([
             'success' => true,
             'posts' => $posts,

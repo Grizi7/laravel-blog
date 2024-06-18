@@ -41,7 +41,15 @@ $(".searchInput").keyup(function () {
             data: { search: search },
             success: function (response) {
                 if (response.success) {
-                    displayPosts(response.posts);
+                    if (response.posts.length > 0) {
+                        displayPosts(response.posts);
+                    } else {
+                        $(".searchResults").html(
+                            `<li class='media my-3 mr-3 rounded'><div class='media-body'>No results found</div></li>
+                                <li class='media my-3 mr-3 rounded'><div class='media-body'><a class="nav-link " href="/blog">Click here to browse all posts!!</a></div></li>`
+                        );
+                    }
+
                 }
             },
         });
