@@ -30,7 +30,9 @@
 - Email verification and Password Reset
 - search and filtering articles by title, content and author
 - create, edit and delete articles for admins and post creator.
+- only admins can publish a post after review.
 - view and comment on articles by users and admins
+- users can contact the admin via contact us form
 
 ## 🔧Requirements <a name = "requirements"></a>
 
