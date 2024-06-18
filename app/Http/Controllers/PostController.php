@@ -121,4 +121,15 @@ class PostController extends Controller
         $post->delete();
         return redirect()->route('myPosts')->with('success', 'Post deleted successfully.');
     }
+
+    public function search(Request $request)
+    {
+        $posts = Post::where('is_published', true)
+            ->where('title', 'like', '%' . $request->search . '%')
+            ->orWhere('content', 'like', '%' . $request->search . '%')->get();
+        return response()->json([
+            'success' => true,
+            'posts' => $posts,
+        ]);
+    }
 }

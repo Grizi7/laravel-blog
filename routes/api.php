@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\CallRequestController;
 use App\Http\Controllers\CommentController;
 use Illuminate\Http\Request;
@@ -15,6 +16,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/comment/add/{id}', [CommentController::class, 'store'])->name('store.comment');
 });
 
+Route::get('/search', [PostController::class, 'search'])->name('blog.posts');
 // Admin Routes
 Route::middleware('auth:sanctum')->group(function () {
     Route::patch('/call-requests/read/{id}', [CallRequestController::class, 'read'])->name('read.request');
